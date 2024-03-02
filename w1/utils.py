@@ -117,13 +117,15 @@ class DataReader:
         
         for n_row, row in enumerate(open(self._fp, "r")):
             row_vals = row.strip('\n').split(self._sep)
-            
             # define the row_vals dictionary 
-            row_vals = #### [YOUR CODE HERE] ####
-            row_vals['n_row'] = #### [YOUR CODE HERE] ####
+            row_vals = {self._col_names[column_num]: row_vals[column_num] for column_num in range(len(self._col_names))}
+            # I did not see any reason to use this next line, the function spec says to return a dict which does not include
+            # an 'n_row' field
+            #row_vals['n_row'] = #### [YOUR CODE HERE] ####
 
             # return results: 
             #### [YOUR CODE HERE] ####
+            yield row_vals
     
     ######################################## YOUR CODE HERE ##################################################
 

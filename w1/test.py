@@ -1,12 +1,11 @@
 import os
-from w1.main import get_sales_information
-from w1.utils import DataReader
+from main import get_sales_information
+from utils import DataReader
 import constants
 from global_utils import blockPrint, enablePrint
 from pprint import pprint
 
 CURRENT_FOLDER = os.path.dirname(os.path.abspath(__file__))
-
 
 def test_data_reader():
     col_names = [constants.OutDataColNames.STOCK_CODE, constants.OutDataColNames.DESCRIPTION,
@@ -17,7 +16,7 @@ def test_data_reader():
     blockPrint()
     data_reader = DataReader(fp=os.path.join(CURRENT_FOLDER, '..', 'data', 'tst', '2015.csv'), sep=',',
                              col_names=col_names)
-
+    
     data_gen = (row for row in data_reader)
     # skipping column names
     _ = next(data_gen)
@@ -25,6 +24,7 @@ def test_data_reader():
     # first row
     row_1 = next(data_gen)
     enablePrint()
+    
 
     # check if row is a dict
     assert isinstance(row_1, dict)
