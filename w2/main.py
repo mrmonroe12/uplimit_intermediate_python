@@ -171,7 +171,7 @@ def main() -> List[Dict]:
         pool.close()
         pool.join()
 
-    revenue_data = revenue_data[0]
+    revenue_data = flatten(revenue_data)
     ######################################## YOUR CODE HERE ##################################################
 
     en = time.time()
@@ -189,7 +189,6 @@ def main() -> List[Dict]:
         
     # should return revenue data
     return revenue_data
-
 if __name__ == '__main__':
     res = main()
     pprint(res)
